@@ -179,6 +179,7 @@ void dfs(int source, int destination)
         {
             if(!visited[graph[path_last_node][i]] && find(tpath.begin(), tpath.end(), graph[path_last_node][i]) == tpath.end())
             {
+                //cout<<"visited : "<<graph[path_last_node][i]<<endl;
                 vector <int> new_path(tpath.begin(), tpath.end());
                 new_path.push_back(graph[path_last_node][i]);
                 it = tq.insert(it, new_path);
