@@ -30,7 +30,7 @@ void a_star(int, int);
 
 int main(int argc, char const *argv[])
 {
-    in = fopen("input03.txt", "r");
+    in = fopen("input.txt", "r");
     out= fopen("output.txt", "w");
     if(!in || !out)
     {
@@ -75,19 +75,19 @@ int main(int argc, char const *argv[])
         sunday_traffic_time[location[place]] = time;
     }
 
-    //if(!strcmp(search, "BFS"))
+    if(!strcmp(search, "BFS"))
     {
         bfs(location[string(start_state)], location[string(goal_state)]);
     }
-    //else if(!strcmp(search, "DFS"))
+    else if(!strcmp(search, "DFS"))
     {
         dfs(location[string(start_state)], location[string(goal_state)]);
     }
-    //else if(!strcmp(search, "UCS"))
+    else if(!strcmp(search, "UCS"))
     {
         ucs(location[string(start_state)], location[string(goal_state)]);
     }
-    //else if(!strcmp(search, "A*"))
+    else if(!strcmp(search, "A*"))
     {
         a_star(location[string(start_state)], location[string(goal_state)]);
     }
