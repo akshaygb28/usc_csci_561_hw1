@@ -30,7 +30,7 @@ void a_star(int, int);
 
 int main(int argc, char const *argv[])
 {
-    in = fopen("input03.txt", "r");
+    in = fopen("input.txt", "r");
     out= fopen("output.txt", "w");
     if(!in || !out)
     {
