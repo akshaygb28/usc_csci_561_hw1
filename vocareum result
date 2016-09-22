@@ -1,0 +1,168 @@
+[Executed at: Wed Sep 21 20:54:41 PDT 2016] 
+
+Input File: 
+BFS 
+A 
+D 
+4 
+A B 5 
+A C 3 
+B D 1 
+C D 2 
+4 
+A 4 
+B 1 
+C 1 
+D 0 
+BFS : A -> D [0 -> 3] 
+Required path : 
+A 0 
+B 1 
+D 2 
+Content from your output file: 
+A 0 
+B 1 
+D 2 
+test case passed! 
+
+
+
+Input File: 
+A* 
+A 
+D 
+4 
+A B 3 
+A C 3 
+B D 2 
+C D 1 
+4 
+A 4 
+B 2 
+C 1 
+D 0 
+A* : A -> D [0 -> 3] 
+Required path : 
+A 0 
+C 3 
+D 4 
+Content from your output file: 
+A 0 
+C 3 
+D 4 
+test case passed! 
+
+
+
+Input File: 
+DFS 
+A 
+H 
+12 
+A B 1 
+B C 1 
+C D 1 
+A E 10 
+E F 2 
+F G 3 
+G H 3 
+A I 1 
+I J 1 
+J K 1 
+K L 1 
+L H 1 
+12 
+A 4 
+I 3 
+B 3 
+E 3 
+J 3 
+C 2 
+F 2 
+K 2 
+L 1 
+G 1 
+D 1 
+H 0 
+DFS : A -> H [0 -> 7] 
+Required path : 
+A 0 
+E 1 
+F 2 
+G 3 
+H 4 
+Content from your output file: 
+A 0 
+E 1 
+F 2 
+G 3 
+H 4 
+test case passed! 
+
+
+
+Input File: 
+DFS 
+Andy 
+Zoe 
+10 
+Andy Bill 4 
+Andy Claire 3 
+Andy Daniel 2 
+Bill Elaine 3 
+Bill Zoe 1 
+Claire Elaine 4 
+Claire Zoe 2 
+Daniel Elaine 2 
+Daniel Zoe 2 
+Elaine Zoe 2 
+6 
+Andy 2 
+Bill 1 
+Claire 1 
+Daniel 1 
+Elaine 1 
+Zoe 0 
+DFS : Andy -> Zoe [0 -> 5] 
+Required path : 
+Andy 0 
+Bill 1 
+Zoe 2 
+Content from your output file: 
+Andy 0 
+Bill 1 
+Zoe 2 
+test case passed! 
+
+
+
+Input File: 
+UCS 
+A 
+G 
+6 
+A B 2 
+A C 3 
+B D 3 
+C E 2 
+D G 1 
+E G 1 
+6 
+A 3 
+B 2 
+C 2 
+D 1 
+E 1 
+G 0 
+UCS : A -> G [0 -> 5] 
+Required path : 
+A 0 
+B 2 
+D 5 
+G 6 
+Content from your output file: 
+A 0 
+B 2 
+D 5 
+G 6 
+test case passed! 
