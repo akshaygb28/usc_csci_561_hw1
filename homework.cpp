@@ -9,8 +9,8 @@
 
 using namespace std;
 
-char start_state[100];
-char goal_state[100];
+char start_state[10000];
+char goal_state[10000];
 
 int live_traffic_lines;
 int sunday_traffic_lines;
@@ -296,12 +296,15 @@ void a_star(int source, int destination)
     vector <int> cost;
     int hcost;
     int visited[sunday_traffic_lines], path_last_node;
+    int visited_cost[sunday_traffic_lines];
 
     for(int k = 0; k < sunday_traffic_lines; k++)
     {
         visited[k] = 0;
+        visited_cost[k] = 0;
     }
     visited[source] = 1;
+    visited_cost[source] = 0;
     tpath.push_back(source);
     cost.push_back(0);
     tq.push_back(tpath);
@@ -356,6 +359,7 @@ void a_star(int source, int destination)
                 //cout<<"hi "<<cost_sum<<endl;
                 //cout<<"visited : "<<graph[path_last_node][i]<<endl;
                 visited[graph[path_last_node][i]] = 1;
+                visited_cost[graph[path_last_node][i]] = cost_sum;
                 if(it2 == tq2.end())
                 {
                     tq.push_back(new_path);
@@ -382,14 +386,55 @@ void a_star(int source, int destination)
                     it1++;
                     it2++;
                 }
-                if(it != tq.end() && cost_sum < *((*it1).begin()+(*it1).size() - 1))
+                if(it != tq.end())// && cost_sum < *((*it1).begin()+(*it1).size() - 1))
                 {
-                    it = tq.erase(it);
-                    it1 = tq1.erase(it1);
-                    it2 = tq2.erase(it2);
-                    it = tq.insert(it, new_path);
-                    it1 = tq1.insert(it1, new_cost);
-                    it2 = tq2.insert(it2, new_hcost);
+                    if(cost_sum < *((*it1).begin()+(*it1).size() - 1))
+                    {
+                        //cout<<"updating the visited node..."<<endl;
+                        visited_cost[graph[path_last_node][i]] = cost_sum;
+                        it = tq.erase(it);
+                        it1 = tq1.erase(it1);
+                        it2 = tq2.erase(it2);
+                        if(it2 == tq2.end())
+                        {
+                            tq.push_back(new_path);
+                            tq1.push_back(new_cost);
+                            tq2.push_back(new_hcost);
+                            continue;
+                        }
+                        it = tq.begin();
+                        it1 = tq1.begin();
+                        it2 = tq2.begin();
+                        while(it2 != tq2.end() && (*it2) <= new_hcost)
+                        {
+                            it++;
+                            it1++;
+                            it2++;
+                        }
+                        it = tq.insert(it, new_path);
+                        it1 = tq1.insert(it1, new_cost);
+                        it2 = tq2.insert(it2, new_hcost);
+                    }
+                }
+                else
+                {
+                    if(cost_sum < visited_cost[graph[path_last_node][i]])
+                    {
+                        //cout<<"visited but found shorter path..."<<endl;
+                        visited_cost[graph[path_last_node][i]] = cost_sum;
+                        it = tq.begin();
+                        it1 = tq1.begin();
+                        it2 = tq2.begin();
+                        while(it2 != tq2.end() && (*it2) <= new_hcost)
+                        {
+                            it++;
+                            it1++;
+                            it2++;
+                        }
+                        it = tq.insert(it, new_path);
+                        it1 = tq1.insert(it1, new_cost);
+                        it2 = tq2.insert(it2, new_hcost);
+                    }
                 }
             }
         }
